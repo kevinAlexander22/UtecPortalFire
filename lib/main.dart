@@ -6,37 +6,7 @@ import 'package:portalutec/pages/HomePage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-/*
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body:cuerpo(),
-    );
-  }*/
-/*
-void main() {
-WidgetsFlutterBinding.ensureInitialized();
-Firebase.initializeApp().then((value) {
-  runApp( MyApp());
-});
-
-}
-*/
-/*
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp().then((value){
-  
-  });
-  runApp(MyApp());
-}*/
+/*  cambios en main con acceso a firebase */
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
