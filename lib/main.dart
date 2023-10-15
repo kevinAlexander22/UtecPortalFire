@@ -7,7 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-/*  cambios en main con acceso a firebase */ //actualizando firebase
+/*  cambios en main con acceso a firebase */ 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -154,7 +154,7 @@ class MyApp extends StatelessWidget {
           border: UnderlineInputBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
-          hintText: "User",
+          hintText: "Usuario",
           fillColor: Color.fromARGB(255, 240, 233, 233),
           filled: true,
         ),
@@ -172,7 +172,7 @@ class MyApp extends StatelessWidget {
           border: UnderlineInputBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
-          hintText: "PassWord",
+          hintText: "Contraseña",
           fillColor: Color.fromARGB(255, 240, 233, 233),
           filled: true,
         ),
@@ -242,17 +242,38 @@ class Screen1 extends StatelessWidget {
             } else {
               // Mostrar mensajes de error al usuario si la validación falla
               if (!_validateUser(userEntered, storedUser)) {
-                print("El usuario ingresado no coincide con el almacenado");
+               ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('El Usuario ingresado no coincide con el almacenado'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
               }
               if (!_validatePassword(passwordEntered, storedPassword)) {
-                print("La contraseña ingresada no coincide con la almacenada");
+                  ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('La contraseña ingresada no coincide con la almacenada'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
               }
             }
           } else {
-            print("El usuario no existe en la base de datos");
+             ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('El usuario que intentas ingresar no existe'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
           }
         } catch (e) {
-          print("Error durante la autenticación: $e");
+         // Mostrar error como SnackBar
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Error durante la autenticación: $e'),
+              duration: Duration(seconds: 2),
+            ),
+          );
         }
       },
     );
@@ -267,11 +288,7 @@ class Screen1 extends StatelessWidget {
   }
 }
 
-//campo para Password
-
-//agreagnod imagen de inicio login
-
-//creando la clase para el evento boton
+//creando la clase para el evento boton invitado 
 
 class invitado extends StatelessWidget {
   @override

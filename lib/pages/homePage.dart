@@ -10,6 +10,7 @@ import 'package:portalutec/pages/mapaUtec.dart';
 import 'package:portalutec/pages/notas.dart';
 import 'package:portalutec/pages/noticias.dart';
 import 'package:portalutec/pages/pensum.dart';
+import 'package:portalutec/pages/puntosPago.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -326,7 +327,7 @@ body: Container(
                   // navegacion pantalla puntos de pago 
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MapaUtec()),
+                    MaterialPageRoute(builder: (context) => PuntosPago()),
                   );
                 }
                  else if (index == 3) {

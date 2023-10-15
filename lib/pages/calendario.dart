@@ -3,15 +3,14 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:portalutec/main.dart';
 import 'package:portalutec/pages/homePage.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:portalutec/pages/aranceles.dart';
-import 'package:portalutec/pages/calendario.dart';
 import 'package:portalutec/pages/carreras.dart';
 import 'package:portalutec/pages/mapaUtec.dart';
 import 'package:portalutec/pages/notas.dart';
 import 'package:portalutec/pages/noticias.dart';
 import 'package:portalutec/pages/horasS.dart';
 import 'package:portalutec/pages/informacion.dart';
-import 'package:portalutec/pages/pensum.dart';
+
+
 
 class CalendarScreen extends StatelessWidget {
   @override
@@ -241,33 +240,54 @@ class _CalendarViewState extends State<CalendarView> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
 
- 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-         TableCalendar(
-          firstDay: DateTime.utc(2010, 10, 16),
-          lastDay: DateTime.utc(2030, 3, 14),
-          focusedDay: DateTime.now(),
-          selectedDayPredicate: (day) {
-          return isSameDay(_selectedDay, day);
-                },
-                onDaySelected: (selectedDay, focusedDay) {
-                  setState(() {
-                    _selectedDay = selectedDay;
-                    _focusedDay = focusedDay; // update `_focusedDay` here as well
-                  });
-                },
-          calendarFormat: _calendarFormat,
-          onFormatChanged: (format) {
-            setState(() {
-              _calendarFormat = format;
-            });
-          },
-        ),
+          TableCalendar(
+            firstDay: DateTime.utc(2010, 10, 16),
+            lastDay: DateTime.utc(2030, 3, 14),
+            focusedDay: DateTime.now(),
+            selectedDayPredicate: (day) {
+              return isSameDay(_selectedDay, day);
+            },
+            onDaySelected: (selectedDay, focusedDay) {
+              setState(() {
+                _selectedDay = selectedDay;
+                _focusedDay = focusedDay; // update `_focusedDay` here as well
+              });
+            },
+            calendarFormat: _calendarFormat,
+            onFormatChanged: (format) {
+              setState(() {
+                _calendarFormat = format;
+              });
+            },
+            headerStyle: HeaderStyle(
+              titleTextStyle: TextStyle(fontSize: 20),
+              leftChevronIcon: Icon(Icons.arrow_back), // Cambia el ícono para retroceder de mes
+              rightChevronIcon: Icon(Icons.arrow_forward), // Cambia el ícono para avanzar de mes
+            ),
+            headerVisible: true, // Puedes establecer esto en false para ocultar el encabezado
+            calendarStyle: CalendarStyle(
+              outsideDaysVisible: false,
+              weekendDecoration: BoxDecoration(
+                color: const Color.fromARGB(255, 187, 93, 86),
+                shape: BoxShape.circle,
+              ),
+              holidayDecoration: BoxDecoration(
+                color: Colors.green,
+                shape: BoxShape.circle,
+              ),
+              defaultTextStyle: TextStyle().copyWith(color: Colors.black),
+              selectedDecoration: BoxDecoration(
+                color: Colors.blue,
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
           // Aquí puedes agregar más widgets debajo del calendario
         ],
       ),
@@ -277,6 +297,6 @@ class _CalendarViewState extends State<CalendarView> {
 
 void main() {
   runApp(MaterialApp(
-    home: CalendarScreen(),
+    home: CalendarView(),
   ));
 }

@@ -233,8 +233,13 @@ class CardList extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.all(16.0),
       children: <Widget>[
-        CardWithLocalImage(imagePath: 'assets/utecverde.png', title: 'Eventos 1', description: 'Descripción de la tarjeta 1'),
-        CardWithLocalImage(imagePath: 'assets/utecverde.png', title: 'Tarjeta 2', description: 'Descripción de la tarjeta 2'),
+        CardWithLocalImage(imagePath: 'assets/info1.jpg', title: 'Oficinas centrales y Centro de Soluciones', description: 'Edif. Gabriela Mistral, entre 1a calle Poniente y 19a avenida Norte. Tel. 2275-8888, WhatsApp 6100-0777'),
+        CardWithLocalImage(imagePath: 'assets/info2.jpg', title: 'Metrocentro:', description: 'Octava etapa, tercera planta, antes del Food Court. '),
+        CardWithLocalImage(imagePath: 'assets/info3.jpg', title: 'Campus Dr. José Mauricio Loucel, Escalón:', description: ' 3a. calle Poniente Schafik Hándal y bulevar Constitución #301, colonia Escalón Tel. 2275-2700, WhatsApp 6420-4295'),
+        CardWithLocalImage(imagePath: 'assets/info4.png', title: 'Plaza Mundo, Soyapango:', description: ' Tercera etapa, planta baja, local 141. Tel. 2275-7566'),
+        
+        
+        
         // Puedes agregar más tarjetas aquí
       ],
     );
@@ -260,7 +265,7 @@ class CardWithLocalImage extends StatelessWidget {
         children: <Widget>[
           Image.asset(
             imagePath,
-            width: 150.0,
+            width: 200.0,
             height: 150.0,
             fit: BoxFit.cover,
           ),

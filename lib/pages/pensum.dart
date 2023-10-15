@@ -25,15 +25,51 @@ class Pensum extends StatelessWidget {
 class BotonesScreen extends StatelessWidget {
   final List<String> textos = [
     'ALGORITMOS',
+    'INGENIERÍA Y PRODUCTIVIDAD',
+    'MATEMÁTICA I',
+    'SEMINARIO TALLER DE COMPETENCIAS',
+    'BASE DE DATOS I',
+    'DIBUJO TÉCNICO',
+    'MATEMÁTICA II',
     'PROGRAMACIÓN ORIENTADA A OBJETOS',
-    'PROGRAMACIÓN I',
-    'PROGRAMACIÓN II ',
-    'PROGRAMACIÓN III ',
-    'Texto 6',
-    'Texto 7',
-    'Texto 8',
-    'Texto 8',
-     'Texto 8',
+    'REALIDAD NACIONAL',
+    'BASE DE DATOS II',
+     'FILOSOFÍA',
+     'FÍSICA I',
+     'MATEMÁTICA III',
+     'PROGRAMACIÓN I',
+     'LENGUAJE UNIFICADO DE MODELADO (UML)',
+     'MATEMÁTICA IV',
+     'DESARROLLO DE LA PLATAFORMA WEB',
+     'FÍSICA II',
+     'PROGRAMACIÓN II',
+     'ESTADÍSTICA Y PROBABILIDADES',
+     'ÉTICA',
+     'FÍSICA III',
+     'PROGRAMACIÓN III',
+     'REDES DE DATOS I',
+     'INTRODUCCIÓN AL ANÁLISIS DE CIRCUITOS',
+     'MATEMÁTICA FINANCIERA',
+     'ORGANIZACIÓN DE LAS COMPUTADORAS',
+     'PROGRAMACIÓN IV',
+     'REDES DE DATOS II',
+     'ADMINISTRACIÓN I',
+     'LENGUAJE DE MÁQUINA',
+     'ELECTRÓNICA',
+     'EXPRESIÓN ORAL Y ESCRITA DEL ESPAÑOL',
+     'INGLÉS I',
+     'ADMINISTRACIÓN DE CENTROS DE CÓMPUTO',
+     'SISTEMAS DIGITALES',
+     'INGLÉS II',
+     'SISTEMAS DE INFORMACIÓN GERENCIAL',
+     'ESTÁNDARES DE PROGRAMACIÓN',
+     'TÉCNICAS DE PRODUCCIÓN INDUSTRIAL DE SOFTWARE I',
+     'TÉCNICAS DE PRODUCCIÓN INDUSTRIAL DE SOFTWARE II',
+     'SISTEMAS OPERATIVOS',
+     'TÉCNICAS DE CALIDAD DE SOFTWARE',
+     'NORMAS Y ESTÁNDARES INTERNACIONALES',
+     'FORMULACIÓN Y EVALUACIÓN DE PROYECTOS',
+    
   ];
   @override
   Widget build(BuildContext context) {
@@ -252,36 +288,70 @@ class BotonesScreen extends StatelessWidget {
     );
   }
 }
-class MyGridView extends StatelessWidget {
+class MyGridView extends StatefulWidget {
   final List<String> textos;
 
-  MyGridView({required this.textos}); // Constructor que recibe la lista de textos
+  MyGridView({required this.textos});
+
+  @override
+  _MyGridViewState createState() => _MyGridViewState();
+}
+
+class _MyGridViewState extends State<MyGridView> {
+  int pressedIndex = -1; // Índice de la celda presionada
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      // Configura la cantidad de columnas
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 4, // Cambia este valor a 4 para 4 columnas
+        crossAxisCount: 3, //cambia la cantidad de columnas
+        crossAxisSpacing: 3.0,
+        mainAxisSpacing: 3.0,
       ),
-      // Especifica la cantidad de elementos
-      itemCount: textos.length,
-      // Constructor de elementos en la cuadrícula
+      itemCount: widget.textos.length,
       itemBuilder: (context, index) {
-        return Container(
-          // Estilo de cada celda con bordes redondos
-          decoration: BoxDecoration(
-            border: Border.all(color: Color.fromARGB(255, 28, 1, 1)),
-            borderRadius: BorderRadius.circular(15.0), // Ajusta el radio según tus preferencias
-          ),
-          child: Center(
-            child: Text(textos[index]), // Utiliza el texto correspondiente
+        return InkWell(
+          onTap: () {
+            // Manejar la acción al tocar la celda
+            // Puedes agregar lógica adicional aquí si es necesario
+          },
+          onTapDown: (details) {
+            // Se ejecuta cuando se presiona la celda
+            setState(() {
+              pressedIndex = index;
+            });
+          },
+          onTapCancel: () {
+            // Se ejecuta cuando se cancela la presión
+            setState(() {
+              pressedIndex = -1;
+            });
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: pressedIndex == index
+                  ? Colors.grey.withOpacity(0.5) // Cambia el tono cuando está presionado
+                  : Color.fromARGB(255, 66, 0, 0),
+              border: Border.all(color: Color.fromARGB(255, 28, 1, 1)),
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: Center(
+              child: Text(
+                widget.textos[index],
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  fontSize: 13.0,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
           ),
         );
       },
     );
   }
 }
+
 
 
 

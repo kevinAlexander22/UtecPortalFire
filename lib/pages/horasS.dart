@@ -235,8 +235,13 @@ class CardList extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.all(16.0),
       children: <Widget>[
-        CardWithLocalImage(imagePath: 'assets/utecverde.png', title: 'Eventos 1', description: 'Descripción de la tarjeta 1'),
+        CardWithLocalImage(imagePath: 'assets/verde1.jpg', title: 'Utec Verde', description: 'Apostándole a la educación ambiental de los líderes empresariales del mañana.'),
+        CardWithLocalImage(imagePath: 'assets/limpieza-lago.jpg', title: 'Nueva jornada de limpieza desarrollan estudiantes de la Utec en el lago de Ilopango', description: 'Durante la actividad, que se ha desarrollado de manera conjunta entre el movimiento medio ambiental Utec Verde, la alcaldía municipal de Ilopango y Fundemas, participaron más de 200 estudiantes de diversas carreras.'),
+        CardWithLocalImage(imagePath: 'assets/utecverde.png', title: 'Desarrollan en la Utec la Campaña de reciclaje universitaria más grande de El Salvador', description: 'La jornada, que tuvo lugar en la plaza del edificio Benito Juárez, se desarrolló en el marco del Día Internacional del Reciclaje.'),
         CardWithLocalImage(imagePath: 'assets/utecverde.png', title: 'Tarjeta 2', description: 'Descripción de la tarjeta 2'),
+        CardWithLocalImage(imagePath: 'assets/utec-verde2ilo.jpg', title: 'Estudiantes de la Utec desarrollaron jornada de limpieza en lago de Ilopangos', description: 'Durante la jornada, que se desarrolló de manera conjunta entre el movimiento medio ambiental Utec Verde, la alcaldía municipal de Ilopango y Fundemas, participaron más de 110 estudiantes de diversas carreras.'),
+
+        //limpieza-lago utec-verde2ilo
         // Puedes agregar más tarjetas aquí
       ],
     );
@@ -276,13 +281,13 @@ class CardWithLocalImage extends StatelessWidget {
                 onPressed: () {
                   // Agrega la lógica para el botón aquí
                 },
-                child: Text('Botón 1'),
+                child: Text('Redes Sociales'),
               ),
               TextButton(
                 onPressed: () {
                   // Agrega la lógica para el segundo botón aquí
                 },
-                child: Text('Botón 2'),
+                child: Text('Mas informacion..'),
               ),
             ],
           ),

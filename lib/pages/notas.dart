@@ -28,11 +28,9 @@ class CarouselItem {
 
 class BotonesScreen extends StatelessWidget {
   final List<CarouselItem> items = [
-    CarouselItem('TÉCNICAS DE CALIDAD DE SOFTWARE', 'Evaluación 1 : 5.6\nOtra información'),
-    CarouselItem('Elemento 2', 'Información adicional para el Elemento 2'),
-    CarouselItem('Elemento 3', 'Información adicional para el Elemento 3'),
-    CarouselItem('Elemento 4', 'Información adicional para el Elemento 4'),
-    CarouselItem('Elemento 5', 'Información adicional para el Elemento 5'),
+    CarouselItem('TÉCNICAS DE CALIDAD DE SOFTWARE', 'Evaluación 1 : 10\nEvaluación 2 : 10\nEvaluación 3 : 10\nEvaluación 4 : 0.0\nEvaluación 5 : 0.0\n'),
+    CarouselItem('NORMAS Y ESTÁNDARES INTERNACIONALES', 'Evaluación 1 : 10\nEvaluación 2 : 9.0\nEvaluación 3 : 10\nEvaluación 4 : 0.0\nEvaluación 4 : 0.0\n'),
+    CarouselItem('FORMULACIÓN Y EVALUACIÓN DE PROYECTOS', 'Evaluación 1 : 10\nEvaluación 2 : 10\nEvaluación 3 : 8.0\nEvaluación 4 : 0.0\nEvaluación 4 : 0.0\n'),
   ];
 
   @override
@@ -270,20 +268,26 @@ class BotonesScreen extends StatelessWidget {
             items: items.map((item) {
               return Center(
                 child: Card(
-                  margin: EdgeInsets.all(10.0),
+                  color: Color.fromARGB(255, 5, 80, 19), 
+                  margin: EdgeInsets.all(15.0),
                   child: Padding(
-                    padding: const EdgeInsets.all(18.0),
+                    padding: const EdgeInsets.all(19.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           item.title,
-                          style: TextStyle(fontSize: 22.0),
+                          style: TextStyle(fontSize: 22.0, color: Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.bold,
+                          ),
+                          
                         ),
                         SizedBox(height: 10),
+                        //texto dentro de las card
                         Text(
                           item.additionalInfo,
-                          style: TextStyle(fontSize: 16.0, color: Colors.grey),
+                          style: TextStyle(fontSize: 25.0, color: Color.fromARGB(255, 197, 192, 192)),
+                           textAlign: TextAlign.center, 
                         ),
                       ],
                     ),
