@@ -14,6 +14,7 @@ import 'package:portalutec/pages/mapaUtec.dart';
 import 'package:portalutec/pages/notas.dart';
 import 'package:portalutec/pages/pruebasNoticias.dart';
 import 'dart:io';
+import 'package:flutter/services.dart' show rootBundle;
 
 class Carreras extends StatelessWidget {
   const Carreras({super.key});
@@ -26,38 +27,30 @@ class Carreras extends StatelessWidget {
   }
 }
 class MyListScreen extends StatelessWidget {
-  final List<String> items = [
-    'Técnico en Ingeniería de Software',
-    'Técnico en Diseño Gráfico',
-    'Técnico en Ingeniería de Redes Computacionales',
-    'Licenciatura en Diseño Gráfico',
-    'Licenciatura en Informática',
-    'Arquitectura',
-    'Ingeniería Industrial',
-    'Ingeniería en Sistemas y Computación',
-    'Técnico en Mercadeo y Ventas',
-    'Técnico en Administración Turística',
-    'Licenciatura en Negocios Internacionales',
-    'Licenciatura en Mercadeo',
-    'Licenciatura en Contaduría Pública',
-    'Licenciatura en Administración de Empresas Turísticas',
-    'Licenciatura en Administración de Empresas con Énfasis en Computación',
-    'Licenciatura en Administración de Empresas',
-    'Licenciatura en Ciencias Jurídicas',
-    'Técnico en Ingeniería de Software',
-    'Técnico en Ingeniería de Redes Computacionales',
-    'Técnico en Diseño Gráfico',
-    'Licenciatura en Diseño Gráfico',
-    'Licenciatura en Informática',
-    'Arquitectura',
-    'Ingeniería Industrial',
-    'Ingeniería en Sistemas y Computación',
-    'Técnico en Relaciones Públicas',
-    'Licenciatura en Comunicaciones',
-    'Licenciatura en Psicología',
-    'Licenciatura en Idioma Inglés',
+  final Map<String, String> pdfFiles = {
+    'Técnico en Ingeniería de Software' : 'IngenieriadeSoftware',//
+    'Técnico en Diseño Gráfico': 'TecnicoenDiseño',//
+    'Técnico en Ingeniería de Redes Computacionales': 'Redes',//
+    'Licenciatura en Diseño Gráfico': 'Redes',//
+    'Licenciatura en Informática': 'LicenciaturaenInformática',//
+    'Arquitectura': 'Arquitectura',//
+    'Ingeniería Industrial': 'IngenieriaIndustrial',//
+    'Ingeniería en Sistemas y Computación': 'IngenieriaenSistemasyComputacion',
+    'Técnico en Mercadeo y Ventas': 'IngenieriadeSoftware',
+    'Técnico en Administración Turística': 'IngenieriadeSoftware',
+    'Licenciatura en Negocios Internacionales': 'IngenieriadeSoftware',
+    'Licenciatura en Mercadeo': 'IngenieriadeSoftware',
+    'Licenciatura en Contaduría Pública': 'IngenieriadeSoftware',
+    'Licenciatura en Administración de Empresas Turísticas': 'IngenieriadeSoftware',
+    'Licenciatura en Administración de Empresas con Énfasis en Computación': 'IngenieriadeSoftware',
+    'Licenciatura en Administración de Empresas': 'IngenieriadeSoftware',
+    'Licenciatura en Ciencias Jurídicas': 'IngenieriadeSoftware',
+    'Técnico en Relaciones Públicas': 'IngenieriadeSoftware',
+    'Licenciatura en Comunicaciones': 'IngenieriadeSoftware',
+    'Licenciatura en Psicología': 'IngenieriadeSoftware',
+    'Licenciatura en Idioma Inglés': 'IngenieriadeSoftware',
   
-  ];
+  };
   //logica para imprimir el pdf
    /*
   Future<void> _imprimirPDF(String contenido) async {
@@ -72,7 +65,7 @@ class MyListScreen extends StatelessWidget {
 
     await Printing.layoutPdf(onLayout: (format) async => pdf.save());
   }
-*/  
+*/  /*
  Future<void> _imprimirPDF(String carrera) async {
     final pdf = pw.Document();
     pdf.addPage(pw.Page(
@@ -97,7 +90,39 @@ class MyListScreen extends StatelessWidget {
       name: 'carrera_$carrera',
     );
   }
+*/Future<void> _imprimirPDF(String carrera) async {
+  final pdf = pw.Document();
+  pdf.addPage(pw.Page(
+    build: (pw.Context context) {
+      return pw.Center(
+        child: pw.Text('Detalles de $carrera'),
+      );
+    },
+  ));
 
+  final Uint8List bytes = await pdf.save();
+
+  final fileName = pdfFiles[carrera] ?? 'default.pdf';
+  final assetPath = 'assets/pdf/$fileName.pdf';
+
+  try {
+    // Utilizar rootBundle para cargar el archivo desde assets
+    final ByteData data = await rootBundle.load(assetPath);
+    final List<int> list = data.buffer.asUint8List();
+
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/$fileName.pdf';
+
+    await File(filePath).writeAsBytes(list);
+
+    await Printing.layoutPdf(
+      onLayout: (PdfPageFormat format) async => File(filePath).readAsBytes(),
+      name: fileName,
+    );
+  } catch (e) {
+    print('Error al cargar el archivo desde assets: $e');
+  }
+}
 
 
   @override
@@ -313,12 +338,11 @@ class MyListScreen extends StatelessWidget {
         ),
       ),
 
-      body: Container(
-       color: Color.fromARGB(255, 84, 4, 4).withOpacity(0.9), // Color de fondo con opacidad
+   body: Container(
+        color: Color.fromARGB(255, 84, 4, 4).withOpacity(0.9),
         child: Column(
           children: <Widget>[
             Padding(
-        
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'Carreras Utec',
@@ -328,41 +352,38 @@ class MyListScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              
             ),
-            
-          Expanded(
+            Expanded(
               child: ListView.builder(
-                itemCount: items.length,
+                itemCount: pdfFiles.length,
                 itemBuilder: (context, index) {
+                  final carrera = pdfFiles.keys.elementAt(index);
                   return Card(
                     elevation: 4.0,
                     margin: EdgeInsets.all(8.0),
                     child: ListTile(
-                      title: Text(items[index]),
+                      title: Text(carrera),
                       onTap: () {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
                               title: Text('Información de la Carrera'),
-                              content: Text('Detalles de ${items[index]} :'),
+                              content: Text('Detalles de $carrera :'),
                               actions: [
                                 TextButton(
                                   onPressed: () {
-                                    // Aquí puedes agregar la lógica para el botón a la izquierda
-                                     Navigator.of(context).pop();
+                                    Navigator.of(context).pop();
                                     print('Botón Izquierdo presionado');
                                   },
                                   child: Text('Cerrar'),
                                 ),
                                 ElevatedButton(
-                                   onPressed: () async {
-                                    await _imprimirPDF(items[index]);
-                                  
+                                  onPressed: () async {
+                                    await _imprimirPDF(carrera);
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    primary: Color.fromARGB(255, 190, 9, 9), // Cambia el color del botón aquí
+                                    primary: Color.fromARGB(255, 190, 9, 9),
                                   ),
                                   child: Text('Imprimir'),
                                 ),

@@ -35,7 +35,7 @@ class InformacionU extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text('Nombre de usuario'),
+              accountName: Text('Admin'),
               accountEmail: Text('2500002023@mail.utec.edu.sv'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/avatar.png'),
@@ -279,13 +279,13 @@ class CardWithLocalImage extends StatelessWidget {
                 onPressed: () {
                   // Agrega la lógica para el botón aquí
                 },
-                child: Text('Botón 1'),
+                child: Text('Informacion'),
               ),
               TextButton(
                 onPressed: () {
                   // Agrega la lógica para el segundo botón aquí
                 },
-                child: Text('Botón 2'),
+                child: Text('Redes Sociales'),
               ),
             ],
           ),

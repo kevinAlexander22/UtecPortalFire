@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:portalutec/pages/HomePage.dart';
 //importaciones de firebase
 import 'package:firebase_core/firebase_core.dart';
+import 'package:portalutec/pages/rClave.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -15,7 +16,6 @@ void main() async {
   );
   runApp(MyApp());
 }
-
 //declarando los controles
 //TextEditingController userController = TextEditingController();
 // TextEditingController passwordController = TextEditingController();
@@ -78,29 +78,29 @@ class MyApp extends StatelessWidget {
                   width: double
                       .infinity, // Ajusta el ancho de la imagen al ancho de la pantalla
                   height: MediaQuery.of(context).size.height *
-                      0.5, // Altura de la imagen
+                      0.3, // Altura de la imagen
                   child: Image.asset(
                     "assets/logo_utec.png",
                     fit: BoxFit.contain, // Ajusta la imagen sin distorsionarla
                   ),
                 ),
                 SizedBox(
-                    height: 5), // Espacio entre la imagen y otros elementos
+                    height: 30), // Espacio entre la imagen y otros elementos
                 Align(
                   alignment: Alignment.center,
                   child: name(),
                 ),
-                SizedBox(height: 15),
+                SizedBox(height:50),
                 Align(
                   alignment: Alignment.center,
                   child: user(userController),
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 30),
                 Align(
                   alignment: Alignment.center,
                   child: password(passwordController),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 60),
                 Align(
                   alignment: Alignment.center,
                   child: Screen1(
@@ -111,14 +111,14 @@ class MyApp extends StatelessWidget {
                 SizedBox(height: 20),
                 Align(
                   alignment: Alignment.center,
-                  child: savePin(),
+                  child: rClve(),
                 ),
                 SizedBox(height: 20),
                 Align(
                   alignment: Alignment.center,
                   child: invitado(),
                 ),
-                SizedBox(height: 22),
+                SizedBox(height: 100),
                 // Espacio adicional al final
               ],
             ),
@@ -308,3 +308,21 @@ class invitado extends StatelessWidget {
     );
   }
 }
+
+class rClve extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      //modificar tamaño del boton
+      child: Text("Recuperar Clave"),
+      onPressed: () => {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => RecuperarClave()))
+      },
+    );
+  }
+}
+
+/*  Widget savePin() {
+    return TextButton(onPressed: () {}, child: Text("Recuperar Clave"));
+  }*/
