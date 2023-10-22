@@ -17,8 +17,6 @@ void main() async {
   runApp(MyApp());
 }
 //declarando los controles
-//TextEditingController userController = TextEditingController();
-// TextEditingController passwordController = TextEditingController();
 class MyApp extends StatelessWidget {
   final TextEditingController userController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -33,21 +31,6 @@ class MyApp extends StatelessWidget {
 
   @override
 
-  //void @override
-/*
-  void initState() {
-    super.initState();
-    getUsers();
-  }
-  void getUsers() async {
-    CollectionReference collectionReference = FirebaseFirestore.instance.collection("users");
-    QuerySnapshot users = await collectionReference.get();
-    if(users.docs.length != 0){
-      for (var doc in users.docs) {
-        print(doc.data());
-      }
-    }
-  }*/
 
   Widget build(BuildContext context) {
     return MaterialApp(

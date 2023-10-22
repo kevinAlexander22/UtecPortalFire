@@ -238,8 +238,6 @@ class CardList extends StatelessWidget {
         CardWithLocalImage(imagePath: 'assets/info3.jpg', title: 'Campus Dr. José Mauricio Loucel, Escalón:', description: ' 3a. calle Poniente Schafik Hándal y bulevar Constitución #301, colonia Escalón Tel. 2275-2700, WhatsApp 6420-4295'),
         CardWithLocalImage(imagePath: 'assets/info4.png', title: 'Plaza Mundo, Soyapango:', description: ' Tercera etapa, planta baja, local 141. Tel. 2275-7566'),
         
-        
-        
         // Puedes agregar más tarjetas aquí
       ],
     );

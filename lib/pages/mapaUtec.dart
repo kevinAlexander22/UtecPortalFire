@@ -23,7 +23,7 @@ class MapaUtec extends StatelessWidget {
 class CarouselItem {
   final String title;
   final String additionalInfo;
-  final String imagePath; // Agrega esta propiedad
+  final String imagePath; 
 
   CarouselItem(this.title, this.additionalInfo, this.imagePath);
 }
@@ -68,7 +68,7 @@ class Edificios extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text('Nombre de usuario'),
+              accountName: Text('Admin'),
               accountEmail: Text('2500002023@mail.utec.edu.sv'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/avatar.png'),

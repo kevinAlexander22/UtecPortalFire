@@ -63,7 +63,7 @@ class _MyCarouselPageState extends State<MyCarouselPage> {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text('Nombre de usuario'),
+              accountName: Text('Admin'),
               accountEmail: Text('2500002023@mail.utec.edu.sv'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/avatar.png'),

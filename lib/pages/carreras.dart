@@ -51,46 +51,7 @@ class MyListScreen extends StatelessWidget {
     'Licenciatura en Idioma Inglés': 'IngenieriadeSoftware',
   
   };
-  //logica para imprimir el pdf
-   /*
-  Future<void> _imprimirPDF(String contenido) async {
-    final pdf = pw.Document();
-    pdf.addPage(pw.Page(
-      build: (pw.Context context) {
-        return pw.Center(
-          child: pw.Text(contenido),
-        );
-      },
-    ));
-
-    await Printing.layoutPdf(onLayout: (format) async => pdf.save());
-  }
-*/  /*
- Future<void> _imprimirPDF(String carrera) async {
-    final pdf = pw.Document();
-    pdf.addPage(pw.Page(
-      build: (pw.Context context) {
-        return pw.Center(
-          child: pw.Text('Detalles de $carrera'),
-        );
-      },
-    ));
-
-    final Uint8List bytes = await pdf.save();
-
-    final appDir = await getApplicationDocumentsDirectory();
-    final appDirPath = appDir.path;
-
-    final filePath = '$appDirPath/carrera_$carrera.pdf'; //cambiar el nombre de la clase a carrera
-    //para hacerlo dinamico final filePath = '$appDirPath/carrera_$carrera.pdf';
-    final file = await File(filePath).writeAsBytes(bytes);
-
-    await Printing.layoutPdf(
-      onLayout: (format) async => bytes,
-      name: 'carrera_$carrera',
-    );
-  }
-*/Future<void> _imprimirPDF(String carrera) async {
+Future<void> _imprimirPDF(String carrera) async {
   final pdf = pw.Document();
   pdf.addPage(pw.Page(
     build: (pw.Context context) {
@@ -149,7 +110,7 @@ class MyListScreen extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text('Nombre de usuario'),
+              accountName: Text('Admin'),
               accountEmail: Text('2500002023@mail.utec.edu.sv'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/avatar.png'),

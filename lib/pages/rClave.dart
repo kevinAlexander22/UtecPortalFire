@@ -35,16 +35,7 @@ class _BotonesScreenState extends State<BotonesScreen> {
         backgroundColor: Color.fromARGB(255, 66, 0, 0),
         title: Center(child: Text('Recuperar Clave')),
       ),
-    /*  drawer: Drawer(
-        backgroundColor: Color.fromARGB(255, 64, 15, 15),
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-           
-            
-          ],
-        ),
-      ),*/
+
 body: Center(
         child: Padding(
           padding: const EdgeInsets.all(40.0),

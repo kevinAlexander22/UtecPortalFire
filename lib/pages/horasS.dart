@@ -37,7 +37,7 @@ class HorasU extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text('Nombre de usuario'),
+              accountName: Text('Admin'),
               accountEmail: Text('2500002023@mail.utec.edu.sv'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/avatar.png'),
@@ -238,11 +238,9 @@ class CardList extends StatelessWidget {
         CardWithLocalImage(imagePath: 'assets/verde1.jpg', title: 'Utec Verde', description: 'Apostándole a la educación ambiental de los líderes empresariales del mañana.'),
         CardWithLocalImage(imagePath: 'assets/limpieza-lago.jpg', title: 'Nueva jornada de limpieza desarrollan estudiantes de la Utec en el lago de Ilopango', description: 'Durante la actividad, que se ha desarrollado de manera conjunta entre el movimiento medio ambiental Utec Verde, la alcaldía municipal de Ilopango y Fundemas, participaron más de 200 estudiantes de diversas carreras.'),
         CardWithLocalImage(imagePath: 'assets/utecverde.png', title: 'Desarrollan en la Utec la Campaña de reciclaje universitaria más grande de El Salvador', description: 'La jornada, que tuvo lugar en la plaza del edificio Benito Juárez, se desarrolló en el marco del Día Internacional del Reciclaje.'),
-        CardWithLocalImage(imagePath: 'assets/utecverde.png', title: 'Tarjeta 2', description: 'Descripción de la tarjeta 2'),
+        CardWithLocalImage(imagePath: 'assets/utecverde.png', title: 'Utec Verde', description: 'Descripción de Utec Verde'),
         CardWithLocalImage(imagePath: 'assets/utec-verde2ilo.jpg', title: 'Estudiantes de la Utec desarrollaron jornada de limpieza en lago de Ilopangos', description: 'Durante la jornada, que se desarrolló de manera conjunta entre el movimiento medio ambiental Utec Verde, la alcaldía municipal de Ilopango y Fundemas, participaron más de 110 estudiantes de diversas carreras.'),
 
-        //limpieza-lago utec-verde2ilo
-        // Puedes agregar más tarjetas aquí
       ],
     );
   }

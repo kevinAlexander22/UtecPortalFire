@@ -20,8 +20,6 @@ class Pensum extends StatelessWidget {
     );
   }
 }
-
-
 class BotonesScreen extends StatelessWidget {
   final List<String> textos = [
     'ALGORITMOS',
@@ -95,7 +93,7 @@ class BotonesScreen extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text('Nombre de usuario'),
+              accountName: Text('Admin'),
               accountEmail: Text('2500002023@mail.utec.edu.sv'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/avatar.png'),

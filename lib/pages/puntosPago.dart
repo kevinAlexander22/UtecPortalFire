@@ -38,7 +38,7 @@ class PuntosPago extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text('Nombre de usuario'),
+              accountName: Text('Admin'),
               accountEmail: Text('2500002023@mail.utec.edu.sv'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/avatar.png'),
@@ -243,17 +243,12 @@ class CardList extends StatelessWidget {
         CardWithLocalImage(imagePath: 'assets/forma5.jpg', title: 'Banco Davivienda', description: 'Pagos Varios'),
         CardWithLocalImage(imagePath: 'assets/forma6.png', title: 'PuntoXpress', description: 'Pagos Varios'),
         CardWithLocalImage(imagePath: 'assets/forma7.jpg', title: 'Pago en línea PayWay', description: 'Pagos Varios'),
-      
-
-
-        //limpieza-lago utec-verde2ilo
-        // Puedes agregar más tarjetas aquí
       ],
     );
   }
 }
 
-class CardWithLocalImage extends StatelessWidget {
+class CardWithLocalImage  extends StatelessWidget {
   final String imagePath;
   final String title;
   final String description;
